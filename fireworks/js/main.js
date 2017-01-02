@@ -697,6 +697,7 @@ function main() {
         });
     });
     ctx.fillStyle = '#100030';
+    //ctx.globalCompositeOperation = 'lighter';
     ctx.fillRect(0, 0, display.width, display.height);
     var lastTime = +new Date();
     var lastFrame = 0;
@@ -708,9 +709,11 @@ function main() {
         lastTime = currentTime;
         fireworks.update(dt);
         if (lastFrame++ % 2 === 0) {
+            //ctx.globalCompositeOperation = 'source-over';
             ctx.globalAlpha = 0.15;
             ctx.fillStyle = '#100030';
             ctx.fillRect(0, 0, display.width, display.height);
+            //ctx.globalCompositeOperation = 'lighter';
             ctx.globalAlpha = 1.0;
         }
         fireworks.render(ctx);
