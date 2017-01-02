@@ -656,8 +656,8 @@ function main() {
     }
     display.addEventListener('click', function (event) {
         console.log('click!');
-        var endX = event.clientX - display.offsetLeft;
-        var endY = event.clientY - display.offsetTop;
+        var endX = (event.clientX - display.offsetLeft) / (display.offsetWidth > 0 ? display.offsetWidth : display.width) * display.width;
+        var endY = (event.clientY - display.offsetTop) / (display.offsetHeight > 0 ? display.offsetHeight : display.height) * display.height;
         var padding = DISPLAY_WIDTH * 0.3;
         var startX = Math.random() * (DISPLAY_WIDTH - padding * 2) + padding;
         var startY = DISPLAY_HEIGHT;
