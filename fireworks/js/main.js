@@ -699,6 +699,7 @@ function main() {
     ctx.fillStyle = '#100030';
     //ctx.globalCompositeOperation = 'lighter';
     ctx.fillRect(0, 0, display.width, display.height);
+    var requestFrame = window.requestAnimationFrame ? window.requestAnimationFrame : function (f) { return setTimeout(f, 1); };
     var lastTime = +new Date();
     var lastFrame = 0;
     var update = function () {
@@ -717,9 +718,9 @@ function main() {
             ctx.globalAlpha = 1.0;
         }
         fireworks.render(ctx);
-        setTimeout(update, 1);
+        requestFrame(update);
     };
-    setTimeout(update, 0);
+    requestFrame(update);
 }
 var onLoad = function (event) {
     clearTimeout(onLoadTimeout);
